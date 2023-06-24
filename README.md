@@ -1,5 +1,5 @@
-# PROJECT NAME
-Code Quiz 
+# PROJECT NAME: CODE QUIZ
+
 
 ## Description
 A timed coding quiz with multiple-choice questions that stores high scores. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code.
