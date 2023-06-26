@@ -1,0 +1,21 @@
+body{
+    background-image: linear-gradient(#f4076a, #84020b);
+    font-family: 'Roboto', sans-serif;
+}
+
+nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: bolder;
+}
+
+.quiz{
+    background: white;
+    width: 95%;
+    max-width: 750px;
+    margin: 100px auto 0;
+    border-radius: 15px;
+    padding: 25px;
+}
