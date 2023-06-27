@@ -1,16 +1,18 @@
 body{
-    background-image: linear-gradient(#f4076a, #84020b);
+    background: linear-gradient(#f4076a, #84020b);
     font-family: 'Roboto', sans-serif;
 }
 
+/* nav bar */
 nav{
     list-style-type: none;
     margin: 0;
     padding: 0;
     color: white;
-    font-weight: bolder;
+    font-weight: 900;
 }
 
+/* quiz layout */
 .quiz{
     background: white;
     width: 95%;
@@ -19,3 +21,51 @@ nav{
     border-radius: 15px;
     padding: 25px;
 }
+.quiz h1{
+    font-weight: 900;
+    color: #84020b;
+    border-bottom: 2px solid #84020b;
+    padding-bottom: 20px;
+}
+
+.quiz-board{
+    padding: 20px 0;
+}
+
+.quiz-board h2{
+    font-weight: 400;
+    color: #84020b;
+}
+
+/* buttons */
+.btn{
+    background-color: #ffffff;
+    color: #84020b;
+    font-weight: 900;
+    width: 50%;
+    border: 2px solid #84020b;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.btn:hover{
+   background: #f4076a; 
+   color: #84020b;
+}
+
+#next-btn{
+    background: #84020b;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 120px;
+    padding: 10px;
+    margin: 40px 0;
+    border: none;
+    font-weight: 900;
+    cursor: pointer;
+    display: none;
+}
+

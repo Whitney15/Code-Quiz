@@ -18,7 +18,8 @@ A timed coding quiz with multiple-choice questions that stores high scores. This
 N/A
 
 ## Credit
-N/A
+Questions provide byt the following Javascript blog:
+https://www.edureka.co/blog/interview-questions/javascript-interview-questions/
 
 ## License
 * none
