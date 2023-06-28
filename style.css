@@ -4,13 +4,18 @@ body{
 }
 
 /* nav bar */
-nav{
+.quiz-info{
     list-style-type: none;
     margin: 0;
     padding: 0;
     color: white;
     font-weight: 900;
+    display: inline;
+  
+    
 }
+
+
 
 /* quiz layout */
 .quiz{
@@ -41,19 +46,24 @@ nav{
 .btn{
     background-color: #ffffff;
     color: #84020b;
-    font-weight: 900;
-    width: 50%;
+    font-weight: 400;
+    width: 100%;
     border: 2px solid #84020b;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
     cursor: pointer;
     display: block;
+    text-align: left;
 }
 
-.btn:hover{
+.btn:hover:not([disabled]){
    background: #f4076a; 
    color: #84020b;
+}
+
+.btn:disabled{
+    cursor: no-drop;
 }
 
 #next-btn{
@@ -69,3 +79,11 @@ nav{
     display: none;
 }
 
+.correct{
+    background: rgb(2, 128, 2);
+    color: #ffffff;
+}
+
+.incorrect{
+    background: rgb(255, 255, 255);
+}
