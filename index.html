@@ -8,14 +8,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
  <div class="quiz-info">
-    <li id="score-board"><a>Highscore</a></li>
-    <!-- <h3>seconds remaining</h3> -->
-    <p id="timer-count"><a>10</a></p>
+    <a id="score-board">Highscore</a>
+    <div id="timer-count">
+        <img src="https://www.iconsdb.com/icons/preview/white/stopwatch-xxl.png" alt="" width="20px">
+        <span class="time-left">10s</span>
+    </div>
+    
  </div>
 
   <div class="quiz">
@@ -32,6 +35,6 @@
     </div>
   </div>
 
-  <script src= "script.js"></script>
+<script src= "script.js"></script>
 </body>
 </html>

@@ -1,20 +1,39 @@
-body{
+html{
     background: linear-gradient(#f4076a, #84020b);
     font-family: 'Roboto', sans-serif;
 }
 
 /* nav bar */
 .quiz-info{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    /* list-style-type: none; */
+    margin: 1rem;
+    padding: 0px;
     color: white;
     font-weight: 900;
-    display: inline;
-  
-    
 }
 
+#score-board{
+    background-color:#84020b;
+    width: 5rem;
+    border-radius: 2.0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem;
+
+   
+}
+
+#timer-count{
+    background-color:#84020b;
+    width: 3rem;
+    border-radius: 2.0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem;
+    float: right;
+}
 
 
 /* quiz layout */
@@ -25,7 +44,9 @@ body{
     margin: 100px auto 0;
     border-radius: 15px;
     padding: 25px;
+    /* display: flex; */
 }
+
 .quiz h1{
     font-weight: 900;
     color: #84020b;

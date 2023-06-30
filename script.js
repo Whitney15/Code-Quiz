@@ -1,3 +1,4 @@
+// 6 query questions
 var questions = [
     {
         question: "What is JavaScript?",
@@ -57,13 +58,14 @@ var questions = [
 var questionsAsked = document.getElementById("questions");
 var answerButton = document.getElementById("answers");
 var nextButton = document.getElementById("next-btn");
-var timerElement = document.querySelector(".timer-count");
+var timeLeft = document.querySelector(".time-left");
 
 var currentQuestionNumber = 0;
 var score = 0;
-var isWin = false;
-var timer;
-var timerCount;
+// var isWin = false;
+// var timer;
+var count = 6;
+var countdown;
 
 
 // The startGame function is called when the start button is clicked
@@ -83,27 +85,31 @@ var timerCount;
     questionsAsked.innerHTML = questionsNo + ". " + currentQuestion.question;
 
  // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-function startTimer() {
-    // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerElement.textContent = timerCount;
-      if (timerCount >= 0) {
-        // Tests if win condition is met
-        if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-          winGame();
-        }
-      }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
-        clearInterval(timer);
-        loseGame();
-      }
-    }, 1000);
-  }
+// function startTimer() {
+//     // Sets timer
+//     timer = setInterval(function() {
+//       timerCount--;
+//       timerElement.textContent = timerCount;
+//       if (timerCount >= 0) {
+//         // Tests if win condition is met
+//         if (isWin && timerCount > 0) {
+//           // Clears interval and stops timer
+//           clearInterval(timer);
+//           winGame();
+//         }
+//       }
+//       // Tests if time has run out
+//       if (timerCount === 0) {
+//         // Clears interval
+//         clearInterval(timer);
+//         loseGame();
+//       }
+//     }, 1000);
+//   }
+
+
+
+
 
 // showing answer on html page
     currentQuestion.answers.forEach(answer => {
@@ -116,12 +122,16 @@ function startTimer() {
         }
         button.addEventListener("click", selectAnswer);
     });
+    
   }
 function  resetState(){
     nextButton.style.display = "none";
     while(answerButton.firstChild){
      answerButton.removeChild(answerButton.firstChild);
     }
+    // where to put the timer enterval??????
+    // clearInterval(countdown);
+    // timerDisplay(); 
 }
 
 function selectAnswer(e){
@@ -140,6 +150,10 @@ function selectAnswer(e){
         button.disabled = true;
     });
     nextButton.style.display = "block";
+    // where to put the timer enterval??????
+    clearInterval(countdown);
+    timerDisplay();
+    
 }
 
 function showScore(){
@@ -155,6 +169,9 @@ function handleNextButton(){
         showQuestion();
     }else{
         showScore();
+        // ????
+        clearInterval(countdown);
+        timerDisplay ();
     }
 }
 
@@ -164,8 +181,24 @@ nextButton.addEventListener("click", ()=>{
         handleNextButton();   
     }else{
         startQuiz();
+        // ???
+        clearInterval(countdown);
+        timerDisplay();
     }
 });
+
+// Timer Dispaly
+var timerDisplay = () => {
+    countdown = setInterval(() => {
+        count--;
+        // score--;
+        timeLeft.innerHTML = `${count}s`;
+        if (count == 0) {
+            clearInterval(countdown);
+            displayNext();
+        }
+    }, 1000);
+};
 
 
   startQuiz();
