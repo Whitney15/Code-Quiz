@@ -4,6 +4,9 @@
 ## Description
 A timed coding quiz with multiple-choice questions that stores high scores. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code.
 
+![Alt text](<assets/images/Screen Shot 2023-06-30 at 1.31.43 PM.png>)
+
+
 ## Table of Contents
 - [Description](#description)
 - [Installation](#installation)

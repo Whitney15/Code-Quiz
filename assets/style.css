@@ -1,5 +1,5 @@
 html{
-    background: linear-gradient(#f4076a, #84020b);
+    background: #f4076a;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -37,13 +37,29 @@ html{
 
 
 /* quiz layout */
+.quiz-intro button{
+    background-color:#84020b;
+    color: #ffffff;
+    font-weight: 900;
+    width: 7rem;
+    border-radius: 2.0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem;
+    visibility: hidden;
+    /* float: right; */
+}
+
 .quiz{
+
     background: white;
     width: 95%;
     max-width: 750px;
     margin: 100px auto 0;
     border-radius: 15px;
     padding: 25px;
+   
     /* display: flex; */
 }
 
@@ -61,6 +77,19 @@ html{
 .quiz-board h2{
     font-weight: 400;
     color: #84020b;
+}
+
+/* highscore screen */
+.highscore-screen{
+    color: #84020b;
+    display: block;
+    visibility: hidden;
+    
+}
+
+.highscore-screen ol{
+    overflow-y: scroll;
+    max-height: 280px;
 }
 
 /* buttons */
