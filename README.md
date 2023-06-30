@@ -6,6 +6,7 @@ A timed coding quiz with multiple-choice questions that stores high scores. This
 
 ![Alt text](<assets/images/Screen Shot 2023-06-30 at 1.31.43 PM.png>)
 
+https://whitney15.github.io/Code-Quiz/
 
 ## Table of Contents
 - [Description](#description)
