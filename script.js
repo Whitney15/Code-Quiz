@@ -66,17 +66,52 @@ var score = 0;
 // var timer;
 var count = 6;
 var countdown;
+const initialTime = 10;
 
 
-// The startGame function is called when the start button is clicked
-    function startQuiz() {
-    currentQuestionNumber = 0;
-    score = 0;
-    timerCount = 10;
-    nextButton.innerHTML = "next";
-    showQuestion();
-    startTimer();
+function resetTimer() {
+    count = initialTime;
+    timeLeft.innerHTML = `${count}s`;
   }
+
+// Function to show the "Start Quiz!" button and hide the quiz prompts
+function showStartButton() {
+    var startButton = document.getElementById("start-btn");
+    startButton.style.visibility = "visible"; // or startButton.style.display = "block";
+    questionsAsked.style.display = "none";
+    answerButton.style.display = "none";
+    nextButton.style.display = "none";
+  }
+  
+  // Function to hide the "Start Quiz!" button and show the quiz prompts
+  function showQuizPrompts() {
+    var startButton = document.getElementById("start-btn");
+    startButton.style.visibility = "hidden"; // or startButton.style.display = "none";
+    questionsAsked.style.display = "block";
+    answerButton.style.display = "block";
+    nextButton.style.display = "block";
+  }
+  
+  // The startGame function is called when the start button is clicked
+  function startQuiz() {
+
+
+    // Call the function to show the quiz prompts and hide the "Start Quiz!" button
+    showQuizPrompts();
+  
+    // Call the function to show the first question and answers
+    showQuestion();
+      // Reset the timer when the quiz starts
+  resetTimer();
+  }
+  
+  // Add an event listener to the "Start Quiz!" button when the page loads
+  document.addEventListener("DOMContentLoaded", function () {
+    showStartButton();
+    var startButton = document.getElementById("start-btn");
+    startButton.addEventListener("click", startQuiz);
+  });
+
 //  showing the question html page
   function showQuestion(){
     resetState();
@@ -135,14 +170,20 @@ function  resetState(){
 }
 
 function selectAnswer(e){
+    resetTimer();
     var selectBtn = e.target;
     var isCorrect = selectBtn.dataset.correct === "true";
     if (isCorrect){
         selectBtn.classList.add("correct");
         score++;
-    }else{
+    } else {
         selectBtn.classList.add("incorrect");
-    }
+        // Subtract additional time for an incorrect answer
+        count -= 5; // Adjust this value as needed
+        if (count < 0) {
+          count = 0; // Make sure the timer doesn't go below 0
+        }
+      }
     Array.from(answerButton.children).forEach(button => {
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
@@ -150,9 +191,10 @@ function selectAnswer(e){
         button.disabled = true;
     });
     nextButton.style.display = "block";
-    // where to put the timer enterval??????
+    // // where to put the timer enterval??????
     clearInterval(countdown);
     timerDisplay();
+    
     
 }
 
@@ -163,12 +205,15 @@ function showScore(){
     nextButton.style.display = "block";
 }
 
-function handleNextButton(){
+function handleNextButton() {
+    // Reset the timer before showing the next question
+    resetTimer();
+  
     currentQuestionNumber++;
-    if(currentQuestionNumber < questions.length){
-        showQuestion();
-    }else{
-        showScore();
+    if (currentQuestionNumber < questions.length) {
+      showQuestion();
+    } else {
+      showScore();
         // ????
         clearInterval(countdown);
         timerDisplay ();
@@ -187,18 +232,43 @@ nextButton.addEventListener("click", ()=>{
     }
 });
 
-// Timer Dispaly
+// Timer Display
 var timerDisplay = () => {
-    countdown = setInterval(() => {
-        count--;
-        // score--;
-        timeLeft.innerHTML = `${count}s`;
-        if (count == 0) {
-            clearInterval(countdown);
-            displayNext();
-        }
-    }, 1000);
+  countdown = setInterval(() => {
+    count--;
+    timeLeft.innerHTML = `${count}s`;
+
+    if (count === 0) {
+      clearInterval(countdown);
+      timeLeft.innerHTML = "Time's up!";
+      // Show the correct answer when the timer runs out
+      showCorrectAnswer();
+      nextButton.style.display = "block";
+      nextButton.innerHTML = "Next";
+      disableAnswerButtons();
+    }
+  }, 1000);
 };
 
+function showCorrectAnswer() {
+  // Find the button with the correct answer
+  var correctButton = Array.from(answerButton.children).find((button) => {
+    return button.dataset.correct === "true";
+  });
 
-  startQuiz();
+  // Add a class to the correct button to highlight it
+  if (correctButton) {
+    correctButton.classList.add("correct");
+  }
+}
+
+function disableAnswerButtons() {
+  // Disable all answer buttons
+  Array.from(answerButton.children).forEach((button) => {
+    button.disabled = true;
+  });
+}
+
+
+
+

@@ -50,6 +50,9 @@ html{
     visibility: hidden;
     /* float: right; */
 }
+#questions, #answers,#next-btn {
+  display: none;
+}
 
 .quiz{
 
